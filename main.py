@@ -11,7 +11,7 @@ def main_loop():
         for message in consumer_received:
             print(bytes.decode(message.value))
             str_message = bytes.decode(message.value)
-            file = str_message.split(': ')[1:]
+            file = str(str_message.split(': ')[1:])
             print(file)
             files.append(file)
             print(len(files))
@@ -19,7 +19,6 @@ def main_loop():
             if len(files) == 2:
                 get_files(files[0], files[1])
                 files = []
-
 
 
 def get_files(file1, file2):
