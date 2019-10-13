@@ -19,8 +19,8 @@ def main_loop():
         break
     #make API call to get files
     print('you escaped the loop!')
-
-    get_files(files[0], files[1])
+    if files[0] and files[1]:
+        get_files(files[0], files[1])
 
 
 
