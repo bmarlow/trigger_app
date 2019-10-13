@@ -13,4 +13,4 @@ RUN pip3 install flask app requests kafka
 
 
 WORKDIR /root/
-CMD python3 main.py
+CMD python3 -u main.py
