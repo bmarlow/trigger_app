@@ -23,8 +23,8 @@ def main_loop():
 
 def get_files(files):
     for file in files:
-        print('the file variable is a ' + type(file))
-        print('the files variable is a ' + type(files))
+        print('the file variable is a ' + str(type(file)))
+        print('the files variable is a ' + str(type(files)))
         print('retrieving file ' + str(file))
         url = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/" + str(file)
         urllib.request.urlretrieve(url, '/root/downloads/' + str(file))

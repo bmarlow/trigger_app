@@ -9,7 +9,7 @@ RUN mkdir /root/results
 RUN chmod 777 /root/results
 
 #install pre-reqs
-RUN yum -y --disableplugin=subscription-manager install python3 shutil wget
+RUN yum -y --disableplugin=subscription-manager install python3 shutil wget vim
 
 #install python pre-reqs
 RUN pip3 install --upgrade pip
