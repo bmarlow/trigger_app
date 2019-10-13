@@ -65,7 +65,7 @@ def send_file(file):
     resultsbasepath = '/root/results/'
     resultsfullpath = resultsbasepath + str(file)
     myfile = {'file': open(resultsfullpath, 'rb')}
-    response = requests.post(uploadapiurl, file=myfile)
+    response = requests.post(uploadapiurl, files=myfile)
     print(response.status_code)
     pass
 
