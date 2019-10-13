@@ -16,6 +16,7 @@ def main_loop():
             print(len(files))
             if len(files) == 2:
                 break
+        break
     #make API call to get files
     print('you escaped the loop!')
 
