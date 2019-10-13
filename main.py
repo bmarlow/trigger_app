@@ -50,9 +50,11 @@ def process_training_files(files):
 
     #issue ML commands
     #####JUST A STUBOUT
-    file = open("/root/results/copy.txt", "w")
-    file.write("This is an empty results file")
-    file.close()
+    temp_file = open("/root/results/results.txt", "w")
+    temp_file.write("This is an empty results file")
+    temp_file.close()
+    file = 'results.txt'
+    ###end stubout
 
     send_file(file)
     pass
