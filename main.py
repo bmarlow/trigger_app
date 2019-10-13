@@ -12,7 +12,7 @@ def main_loop():
             str_message = bytes.decode(message.value)
             file = str_message.split(': ')[1:]
             files.append(file)
-            if files.len() == 2:
+            if len(files) == 2:
                 break
     #make API call to get files
     print('you escaped the loop!')
