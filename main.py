@@ -48,12 +48,17 @@ def process_training_files(files):
     for file in files:
         shutil.move(dlpath + file, processingpath + file)
 
+
+    #for timestamping results file
+    now = datetime.datetime.now()
+    dt_string = now.strftime("%d/%m/%Y-%H:%M:%S")
+
     #issue ML commands
     #####JUST A STUBOUT
     temp_file = open("/root/results/results.txt", "w")
     temp_file.write("This is an empty results file")
     temp_file.close()
-    file = 'results--' + datetime.datetime + '.txt'
+    file = 'results--' + dt_string + '.txt'
     ###end stubout
 
     send_file(file)
