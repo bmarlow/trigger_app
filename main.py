@@ -10,9 +10,9 @@ def main_loop():
         for message in consumer_received:
             print(bytes.decode(message.value))
             str_message = bytes.decode(message.value)
-            file = str(str_message.split(': ')[1:])
-            print(file)
-            files.append(file)
+            filename = str(str_message.split(': ')[1:])
+            print(filename)
+            files.append(filename)
             print(len(files))
 
             if len(files) == 2:
