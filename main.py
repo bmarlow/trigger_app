@@ -23,12 +23,17 @@ def main_loop():
 
 def get_files(files):
     for file in files:
-        print('retrieving file ' + file)
-        url = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/" + file
-        urllib.request.urlretrieve(url, '/root/downloads/' + file)
+        print('retrieving file ' + str(file))
+        url = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/" + str(file)
+        urllib.request.urlretrieve(url, '/root/downloads/' + str(file))
     pass
 
 
+def process_training_files(file1, file2):
+    pass
+
+def send_file(file):
+    pass
 
 if __name__ == "__main__":
     main_loop()
