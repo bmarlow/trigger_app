@@ -17,12 +17,12 @@ def main_loop():
             print(len(files))
 
             if len(files) == 2:
-                get_files(files[0], files[1])
+                get_files(files)
                 files = []
 
 
 def get_files(file1, file2):
-    for file in [file1, file2]:
+    for file in files:
         print('retrieving file ' + file)
         url = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/" + file
         urllib.request.urlretrieve(url, '/root/downloads/' + file)
