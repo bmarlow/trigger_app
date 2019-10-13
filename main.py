@@ -9,15 +9,12 @@ def main_loop():
         consumer_received = kafka.KafkaConsumer('file-received', bootstrap_servers='my-cluster-kafka-bootstrap:9092', consumer_timeout_ms=10000)
         for message in consumer_received:
             print(bytes.decode(message.value))
-            str_message = bytes.decode(message.value)
             #if its stupid but it works...  well this is still stupid
             filename = str(str_message.split(': ')[1:])
             filename = filename.replace("'", '')
             filename = filename.replace('[', '')
             filename = filename.replace(']', '')
-            print(filename)
             files.append(filename)
-            print(len(files))
 
             if len(files) == 2:
                 get_files(files)
@@ -26,9 +23,7 @@ def main_loop():
 
 def get_files(files):
     for file in files:
-        print('the file variable is a ' + str(type(file)))
-        print('the files variable is a ' + str(type(files)))
-        print('retrieving file ' + file)
+        print('retrieving file from dropoff pod ' + file)
         baseurl = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/"
         url = baseurl + file
         print(url)
@@ -71,9 +66,11 @@ def send_file(file):
     resultsfullpath = resultsbasepath + str(file)
     myfile = {'file': open(resultsfullpath, 'rb')}
     response = requests.post(uploadapiurl, files=myfile)
-    print(response.status_code)
+    if response.status_code == 201:
+        print('results file ' + file + ' successfully sent to dropoff pod')
+    else:
+        print('something went wrong, try again')
     pass
-
 
 if __name__ == "__main__":
     main_loop()
