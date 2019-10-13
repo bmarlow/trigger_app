@@ -8,7 +8,7 @@ def main_loop():
     while True:
         consumer_received = kafka.KafkaConsumer('file-received', bootstrap_servers='my-cluster-kafka-bootstrap:9092', consumer_timeout_ms=10000)
         for message in consumer_received:
-            str_message = print(bytes.decode(message.value))
+            str_message = bytes.decode(message.value)
             print(str_message)
             #if its stupid but it works...  well this is still stupid
             filename = str(str_message.split(': ')[1:])
