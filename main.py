@@ -51,11 +51,11 @@ def process_training_files(files):
 
     #for timestamping results file
     now = datetime.datetime.now()
-    dt_string = now.strftime("%d/%m/%Y-%H:%M:%S")
+    dt_string = now.strftime("%d%m%Y-%H%M%S")
 
     #issue ML commands
     #####JUST A STUBOUT
-    temp_file = open("/root/results/results" + dt_string + '.txt', "w")
+    temp_file = open("/root/results/results--" + dt_string + '.txt', "w")
     temp_file.write("This is an empty results file")
     temp_file.close()
     file = 'results--' + dt_string + '.txt'
