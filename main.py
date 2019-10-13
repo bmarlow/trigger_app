@@ -10,6 +10,7 @@ def main_loop():
         for message in consumer_received:
             print(bytes.decode(message.value))
             str_message = bytes.decode(message.value)
+            #if its stupid but it works...  well this is still stupid
             filename = str(str_message.split(': ')[1:])
             filename = filename.replace("'", '')
             filename = filename.replace('[', '')
@@ -20,7 +21,6 @@ def main_loop():
 
             if len(files) == 2:
                 get_files(files)
-                print(files)
                 files = []
 
 
@@ -36,11 +36,25 @@ def get_files(files):
         dlpathwithfile = dlpath + file
         r = requests.get(url)
         open(dlpathwithfile, 'wb').write(r.content)
+
+    process_training_files(files)
     pass
 
 
-def process_training_files(file1, file2):
+def process_training_files(files):
+    dlpath = '/root/downloads/'
+    processingpath = '/root/processing/'
+    processedpath = '/root/processed/'
+    for file in files:
+        shutil.move(dlpath + file, processingpath + file)
+
     #issue ML commands
+    #####JUST A STUBOUT
+    file = open("/root/results/copy.txt", "w")
+    file.write("This is an empty results file")
+    file.close()
+
+    send_file(file)
     pass
 
 
@@ -48,8 +62,9 @@ def send_file(file):
     uploadapiurl = 'http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/api-upload'
     resultsbasepath = '/root/results'
     resultsfullpath = resultsbasepath + file
-    myfile = {'file': open(resultsfullpath)}
-    #response = urllib.request
+    myfile = {'file': open(resultsfullpath, 'rb')}
+    response = requests.post(uploadapiurl, file=myfile)
+    print(response.status_code)
     pass
 
 
