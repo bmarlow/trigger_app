@@ -21,12 +21,14 @@ def main_loop():
                 files = []
 
 
-def get_files(file1, file2):
+def get_files(files):
     for file in files:
         print('retrieving file ' + file)
         url = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/" + file
         urllib.request.urlretrieve(url, '/root/downloads/' + file)
     pass
+
+
 
 if __name__ == "__main__":
     main_loop()
