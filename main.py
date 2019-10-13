@@ -25,9 +25,10 @@ def get_files(files):
     for file in files:
         print('the file variable is a ' + str(type(file)))
         print('the files variable is a ' + str(type(files)))
-        print('retrieving file ' + str(file))
-        url = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/" + str(file)
-        urllib.request.urlretrieve(url, '/root/downloads/' + str(file))
+        print('retrieving file ' + file)
+        url = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/" + file
+        print(url)
+        urllib.request.urlretrieve(url, '/root/downloads/' + file)
     pass
 
 
