@@ -14,19 +14,14 @@ def main_loop():
             print(file)
             files.append(file)
             print(len(files))
-            if len(files) == 2:
-                break
-        break
-    #make API call to get files
-    print('you escaped the loop!')
-    if files[0] and files[1]:
-        get_files(files[0], files[1])
+
+            if files[0] and files[1]:
+                get_files(files[0], files[1])
+                files = []
 
 
 
 def get_files(file1, file2):
-
-    main_loop()
     pass
 
 if __name__ == "__main__":
