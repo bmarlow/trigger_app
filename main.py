@@ -15,7 +15,7 @@ def main_loop():
             files.append(file)
             print(len(files))
 
-            if files[0] and files[1]:
+            if len(files) == 2:
                 get_files(files[0], files[1])
                 files = []
 
