@@ -1,5 +1,5 @@
 import os
-import urllib.request
+import urllib.request, requests
 import shutil, kafka, logging, time
 
 def main_loop():
@@ -29,17 +29,24 @@ def get_files(files):
         baseurl = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/"
         url = baseurl + file
         print(url)
-        dlpath = '/root/downloads'
+        dlpath = '/root/downloads/'
         dlpathwithfile = dlpath + file
-        urllib.request.urlretrieve(url, '/root/downloads/' + dlpathwithfile)
+        r = requests.get(url)
+        open(dlpathwithfile, 'wb').write(r.content)
     pass
 
 
 def process_training_files(file1, file2):
+    #issue ML commands
     pass
 
 
 def send_file(file):
+    uploadapiurl = 'http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/api-upload'
+    resultsbasepath = '/root/results'
+    resultsfullpath = resultsbasepath + file
+    myfile = {'file': open(resultsfullpath)}
+    #response = urllib.request
     pass
 
 
