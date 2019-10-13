@@ -1,6 +1,6 @@
 import os
 import urllib.request, requests
-import shutil, kafka, logging, time
+import shutil, kafka, logging, time, datetime
 
 def main_loop():
     files = []
@@ -53,7 +53,7 @@ def process_training_files(files):
     temp_file = open("/root/results/results.txt", "w")
     temp_file.write("This is an empty results file")
     temp_file.close()
-    file = 'results.txt'
+    file = 'results--' + datetime.datetime + '.txt'
     ###end stubout
 
     send_file(file)
