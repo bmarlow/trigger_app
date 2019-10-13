@@ -9,7 +9,7 @@ def main_loop():
         consumer_received = kafka.KafkaConsumer('file-received', bootstrap_servers='my-cluster-kafka-bootstrap:9092', consumer_timeout_ms=10000)
         for message in consumer_received:
             print(bytes.decode(message.value))
-            file = message.value.split(': ')[1:]
+            file = bytes.decode(message.value.split(': ')[1:])
             files.append(file)
             if files.len() == 2:
                 break
