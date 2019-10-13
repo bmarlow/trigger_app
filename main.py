@@ -3,7 +3,6 @@ import urllib.request
 import shutil, kafka, logging, time
 
 def main_loop():
-    count = 0
     files = []
     print('Streams initiated...')
     while True:
@@ -18,11 +17,14 @@ def main_loop():
 
             if len(files) == 2:
                 get_files(files)
+                print(files)
                 files = []
 
 
 def get_files(files):
     for file in files:
+        print('the file variable is a ' + type(file))
+        print('the files variable is a ' + type(files))
         print('retrieving file ' + str(file))
         url = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/" + str(file)
         urllib.request.urlretrieve(url, '/root/downloads/' + str(file))
@@ -32,8 +34,10 @@ def get_files(files):
 def process_training_files(file1, file2):
     pass
 
+
 def send_file(file):
     pass
+
 
 if __name__ == "__main__":
     main_loop()
