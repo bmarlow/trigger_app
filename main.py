@@ -27,7 +27,6 @@ def get_files(files):
         print('retrieving file from dropoff pod ' + file)
         baseurl = "http://dropoff-marlowkart.apps.lakitu.hosted.labgear.io/files/"
         url = baseurl + file
-        print(url)
         dlpath = '/root/downloads/'
         dlpathwithfile = dlpath + file
         r = requests.get(url)
