@@ -8,7 +8,8 @@ def main_loop():
     while True:
         consumer_received = kafka.KafkaConsumer('file-received', bootstrap_servers='my-cluster-kafka-bootstrap:9092', consumer_timeout_ms=10000)
         for message in consumer_received:
-            print(bytes.decode(message.value))
+            str_message = print(bytes.decode(message.value))
+            print(str_message)
             #if its stupid but it works...  well this is still stupid
             filename = str(str_message.split(': ')[1:])
             filename = filename.replace("'", '')
@@ -53,10 +54,10 @@ def process_training_files(files):
     temp_file = open("/root/results/results--" + dt_string + '.txt', "w")
     temp_file.write("This is an empty results file")
     temp_file.close()
-    file = 'results--' + dt_string + '.txt'
+    results_file = 'results--' + dt_string + '.txt'
     ###end stubout
 
-    send_file(file)
+    send_file(results_file)
     pass
 
 
