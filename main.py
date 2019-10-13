@@ -11,11 +11,22 @@ def main_loop():
             print(bytes.decode(message.value))
             str_message = bytes.decode(message.value)
             file = str_message.split(': ')[1:]
+            print(file)
             files.append(file)
+            print(len(files))
             if len(files) == 2:
                 break
     #make API call to get files
     print('you escaped the loop!')
+
+    get_files(files[0], files[1])
+
+
+
+def get_files(file1, file2):
+
+    main_loop()
+    pass
 
 if __name__ == "__main__":
     main_loop()
